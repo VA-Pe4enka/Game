@@ -4,9 +4,11 @@ import (
 	"Game/characters"
 	"bufio"
 	"fmt"
+	"math/rand"
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 var Heal float64
@@ -30,41 +32,78 @@ func CreateItems() {
 
 }
 
-var BeeHealth int
-var BeeDamage int
-var BeeSpeed int
-var RabbitHealth int
-var RabbitDamage int
-var RabbitSpeed int
-var BearHealth int
-var BearDamage int
-var BearSpeed int
 
+var BossHealth int
+var BossDamage int
+var BossSpeed int
 func CreateBosses() {
 
 	bee := characters.GiantBee{}
 	bee.SetHealth()
-	BeeHealth = bee.BossHealth
+
 	bee.SetDamage()
-	BeeDamage = bee.BossDamage
+
 	bee.SetSpeed()
-	BeeSpeed = bee.BossSpeed
+
 
 	rabbit := characters.CrazyRabbit{}
 	rabbit.SetHealth()
-	RabbitHealth = rabbit.BossHealth
+
 	rabbit.SetDamage()
-	RabbitDamage = rabbit.BossDamage
+
 	rabbit.SetSpeed()
-	RabbitSpeed = rabbit.BossSpeed
+
 
 	bear := characters.BearRod{}
 	bear.SetHealth()
-	BearHealth = bear.BossHealth
+
 	bear.SetDamage()
-	BearDamage = bear.BossDamage
+
 	bear.SetSpeed()
-	BearSpeed = bear.BossSpeed
+
+
+	fmt.Println("Выбирете противника:")
+	fmt.Println("1. Королева пчел")
+	fmt.Println("2. Бешеный кролик")
+	fmt.Println("3. Медведь шатун")
+
+	reader := bufio.NewReader(os.Stdin)
+	choiceStr, _ := reader.ReadString('\n')
+	choiceStr = strings.TrimSpace(choiceStr)
+
+	choice, _ := strconv.ParseFloat(choiceStr, 32)
+
+	switch choice {
+	case 1:
+		fmt.Println("Выбран противник - Королева пчел!")
+		BossHealth = bee.BossHealth
+		fmt.Println("Здоровье противника: ", BossHealth)
+		BossDamage = bee.BossDamage
+		fmt.Println("Урон противника: ", BossDamage)
+		BossSpeed = bee.BossSpeed
+		fmt.Println("Скорость противника: ", BossSpeed)
+	case 2:
+		fmt.Println("Выбран противник - Бешеный кролик!")
+		BossHealth = rabbit.BossHealth
+		fmt.Println("Здоровье противника: ", BossHealth)
+		BossDamage = rabbit.BossDamage
+		fmt.Println("Урон противника: ", BossDamage)
+		BossSpeed = rabbit.BossSpeed
+		fmt.Println("Скорость противника:", BossSpeed)
+
+	case 3:
+		fmt.Println("Выбран противник - Медведь шатун!")
+		BossHealth = bear.BossHealth
+		fmt.Println("Здоровье противника: ",BossHealth)
+		BossDamage = bear.BossDamage
+		fmt.Println("Урон противника: ",BossHealth )
+		BossSpeed = bear.BossSpeed
+		fmt.Println("Скорость противника: ", BossSpeed)
+
+
+
+	}
+
 
 }
 
@@ -92,25 +131,49 @@ func ChooseHero() {
 		fmt.Println("Выбран персонаж Разведчик")
 		Hero := characters.Scout{}
 		Hero.SetHealth()
+		Health = Hero.Health
+		fmt.Println("Здоровье персонажа :", Health )
 		Hero.SetArmour()
+		Armored = Hero.Armoured
+		fmt.Println("Защита персонажа :", Armored )
 		Hero.SetDamage()
+		Damage = Hero.Damage
+		fmt.Println("Урон персонажа :", Damage )
 		Hero.SetSpeed()
+		Speed = Hero.Speed
+		fmt.Println("Скорость персонажа :", Speed )
 
 	case 2:
 		fmt.Println("Выбран персонаж Охотник")
 		Hero := characters.Hunter{}
 		Hero.SetHealth()
+		Health = Hero.Health
+		fmt.Println("Здоровье персонажа :", Health )
 		Hero.SetArmour()
+		Armored = Hero.Armoured
+		fmt.Println("Защита персонажа :", Armored )
 		Hero.SetDamage()
+		Damage = Hero.Damage
+		fmt.Println("Урон персонажа :", Damage )
 		Hero.SetSpeed()
+		Speed = Hero.Speed
+		fmt.Println("Скорость персонажа :", Speed )
 
 	case 3:
 		fmt.Println("Выбран персонаж Паладин")
 		Hero := characters.Paladin{}
 		Hero.SetHealth()
+		Health = Hero.Health
+		fmt.Println("Здоровье персонажа :", Health )
 		Hero.SetArmour()
+		Armored = Hero.Armoured
+		fmt.Println("Защита персонажа :", Armored )
 		Hero.SetDamage()
+		Damage = Hero.Damage
+		fmt.Println("Урон персонажа :", Damage )
 		Hero.SetSpeed()
+		Speed = Hero.Speed
+		fmt.Println("Скорость персонажа :", Speed )
 
 	default:
 		fmt.Println("Такого персонажа пока нет :)")
@@ -134,12 +197,82 @@ func SpeedUp() {
 	Speed = +Boost
 }
 
+
+
+
+
+func Fight(){
+
+	fmt.Println("Битва начинается!!!")
+	fmt.Println("Выбирете действие:")
+	fmt.Println("1. Атаковать")
+	fmt.Println("2. Использовать расходник")
+	fmt.Println("3. Отступить")
+
+	reader := bufio.NewReader(os.Stdin)
+	moveStr, _ := reader.ReadString('\n')
+	moveStr = strings.TrimSpace(moveStr)
+
+	move, _ := strconv.ParseFloat(moveStr, 32)
+
+	switch move {
+
+	case 1:
+		sec := time.Now().Unix()
+		rand.Seed(sec)
+		chance := rand.Intn(10) + 1
+
+		if chance >= Speed{
+			BossHealth =- Damage
+		} else {
+			fmt.Println("Ваш персонаж не успел за уворачивающимся противником...")
+		}
+		Health =- BossDamage
+
+	case 2:
+		fmt.Println("Выбирете расходник:")
+		fmt.Println("1. Аптечка")
+		fmt.Println("2. Заточка оружия")
+		fmt.Println("3. Улучшить броню")
+		fmt.Println("4. Зелье скорости (повышенный шанс нанести урон")
+
+		reader := bufio.NewReader(os.Stdin)
+		choiceStr, _ := reader.ReadString('\n')
+		choiceStr = strings.TrimSpace(choiceStr)
+
+		choice, _ := strconv.ParseFloat(choiceStr, 32)
+
+		switch choice {
+		case 1:
+			Healing()
+
+		case 2:
+			PlusDamage()
+
+		case 3:
+			RainForce()
+
+		case 4:
+			SpeedUp()
+
+		}
+
+	case 3:
+		break
+
+	}
+
+
+}
+
+
 func main() {
 
 	CreateItems()
 
-	CreateBosses()
-
 	ChooseHero()
 
+	CreateBosses()
+
+	Fight()
 }
