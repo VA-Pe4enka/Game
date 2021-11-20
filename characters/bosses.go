@@ -28,7 +28,7 @@ func (bee *GiantBee) SetDamage() {
 }
 
 func (bee *GiantBee) SetSpeed() {
-	bee.BossSpeed = 1
+	bee.BossSpeed = 5
 }
 
 func (r *CrazyRabbit) SetHealth() {
@@ -40,7 +40,7 @@ func (r *CrazyRabbit) SetDamage() {
 }
 
 func (r *CrazyRabbit) SetSpeed() {
-	r.BossSpeed = 1
+	r.BossSpeed = 5
 }
 
 func (bear *BearRod) SetHealth() {
@@ -52,5 +52,5 @@ func (bear *BearRod) SetDamage() {
 }
 
 func (bear *BearRod) SetSpeed() {
-	bear.BossSpeed = 1
+	bear.BossSpeed = 5
 }

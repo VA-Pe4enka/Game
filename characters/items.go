@@ -1,7 +1,7 @@
 package characters
 
 type HealthKit struct {
-	Heal float64
+	Heal int
 }
 
 type Armour struct {
@@ -17,7 +17,7 @@ type Poison struct {
 }
 
 func (h *HealthKit) SetHealing() {
-	h.Heal = 1.5
+	h.Heal = 75
 }
 
 func (a *Armour) SetRainForce() {

@@ -32,7 +32,7 @@ func (s *Scout) SetArmour() {
 }
 
 func (s *Scout) SetDamage() {
-	s.Damage = 1
+	s.Damage = 1000
 	return
 }
 
