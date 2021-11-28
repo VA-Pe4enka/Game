@@ -24,7 +24,7 @@ func (bee *GiantBee) SetHealth() {
 }
 
 func (bee *GiantBee) SetDamage() {
-	bee.BossDamage = 1
+	bee.BossDamage = 7
 }
 
 func (bee *GiantBee) SetSpeed() {
