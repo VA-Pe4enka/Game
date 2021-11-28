@@ -27,7 +27,7 @@ func (s *Scout) SetHealth() {
 }
 
 func (s *Scout) SetArmour() {
-	s.Armoured = 25
+	s.Armoured = 0
 	return
 }
 
@@ -47,12 +47,12 @@ func (h *Hunter) SetHealth() {
 }
 
 func (h *Hunter) SetArmour() {
-	h.Armoured = 50
+	h.Armoured = 25
 	return
 }
 
 func (h *Hunter) SetDamage() {
-	h.Damage = 1
+	h.Damage = 23
 	return
 }
 
@@ -67,16 +67,17 @@ func (p *Paladin) SetHealth() {
 }
 
 func (p *Paladin) SetArmour() {
-	p.Armoured = 100
+	p.Armoured = 40
 	return
 }
 
 func (p *Paladin) SetDamage() {
-	p.Damage = 1
+	p.Damage = 37
 	return
 }
 
 func (p *Paladin) SetSpeed() {
-	p.Speed = 5
+	p.Speed = 2
+
 	return
 }

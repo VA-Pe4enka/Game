@@ -21,7 +21,7 @@ func (h *HealthKit) SetHealing() {
 }
 
 func (a *Armour) SetRainForce() {
-	a.RainForce = 20
+	a.RainForce = 5
 }
 
 func (w *Weapon) SetDamageBoost() {

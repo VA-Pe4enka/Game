@@ -24,19 +24,19 @@ func (bee *GiantBee) SetHealth() {
 }
 
 func (bee *GiantBee) SetDamage() {
-	bee.BossDamage = 7
+	bee.BossDamage = 13
 }
 
 func (bee *GiantBee) SetSpeed() {
-	bee.BossSpeed = 5
+	bee.BossSpeed = 7
 }
 
 func (r *CrazyRabbit) SetHealth() {
-	r.BossHealth = 150
+	r.BossHealth = 300
 }
 
 func (r *CrazyRabbit) SetDamage() {
-	r.BossDamage = 1
+	r.BossDamage = 26
 }
 
 func (r *CrazyRabbit) SetSpeed() {
@@ -44,13 +44,13 @@ func (r *CrazyRabbit) SetSpeed() {
 }
 
 func (bear *BearRod) SetHealth() {
-	bear.BossHealth = 200
+	bear.BossHealth = 400
 }
 
 func (bear *BearRod) SetDamage() {
-	bear.BossDamage = 1
+	bear.BossDamage = 43
 }
 
 func (bear *BearRod) SetSpeed() {
-	bear.BossSpeed = 5
+	bear.BossSpeed = 3
 }

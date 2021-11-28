@@ -84,6 +84,7 @@ Pers:
 		fmt.Println("_______________________________")
 		fmt.Println()
 
+
 	case 2:
 		fmt.Println("Выбран персонаж Охотник")
 		fmt.Println()
@@ -190,6 +191,9 @@ func Fight() {
 	Battle()
 
 	fmt.Println("Поебда... Впереди еще есть враги...")
+	fmt.Println()
+	fmt.Println("_______________________________")
+	fmt.Println()
 
 	rabbit := characters.CrazyRabbit{}
 	rabbit.SetHealth()
@@ -203,6 +207,11 @@ func Fight() {
 	fmt.Println("Урон противника: ", BossDamage)
 	BossSpeed = rabbit.BossSpeed
 	fmt.Println("Скорость противника:", BossSpeed)
+	fmt.Println()
+	fmt.Println("Здоровье персонажа :", Health)
+	fmt.Println("Защита персонажа :", Armored)
+	fmt.Println("Урон персонажа :", Damage)
+	fmt.Println("Скорость персонажа :", Speed)
 	fmt.Println()
 	fmt.Println("_______________________________")
 	fmt.Println()
@@ -220,9 +229,14 @@ func Fight() {
 	BossHealth = bear.BossHealth
 	fmt.Println("Здоровье противника: ", BossHealth)
 	BossDamage = bear.BossDamage
-	fmt.Println("Урон противника: ", BossHealth)
+	fmt.Println("Урон противника: ", BossDamage)
 	BossSpeed = bear.BossSpeed
 	fmt.Println("Скорость противника: ", BossSpeed)
+	fmt.Println()
+	fmt.Println("Здоровье персонажа :", Health)
+	fmt.Println("Защита персонажа :", Armored)
+	fmt.Println("Урон персонажа :", Damage)
+	fmt.Println("Скорость персонажа :", Speed)
 	fmt.Println()
 	fmt.Println("_______________________________")
 	fmt.Println()
@@ -279,7 +293,7 @@ Act:
 			fmt.Println("Ваш персонаж не успел за уворачивающимся противником...")
 		}
 		if enemyChance < BossSpeed {
-			Health = Health - BossDamage
+			Health = Health - (BossDamage - int(float64(BossHealth * (Armour/100))))
 		} else {
 			fmt.Println("Вы смогли увернуться от атаки противника!")
 		}
@@ -322,6 +336,7 @@ Act:
 			fmt.Println("2. Заточка оружия. Осталось:", countWeaponry)
 			fmt.Println("3. Улучшить броню. Осталось:", countArmoury)
 			fmt.Println("4. Зелье скорости (повышенный шанс нанести урон). Осталось:", countSpeed)
+			fmt.Println("5. Отмена")
 
 			reader := bufio.NewReader(os.Stdin)
 			choiceStr, _ := reader.ReadString('\n')
@@ -373,7 +388,12 @@ Act:
 					fmt.Println("У вас не осталось зелий!")
 					goto B
 				}
-
+			case 5:
+				fmt.Println()
+				fmt.Println("_______________________________")
+				fmt.Println()
+				Action[1] = "Использовать расходник"
+				goto Act
 
 			default:
 				goto B
@@ -400,6 +420,7 @@ Act:
 
 	default:
 		fmt.Println("Такого дейстия пока нет :)")
+		goto Act
 
 	}
 
