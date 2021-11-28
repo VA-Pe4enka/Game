@@ -21,6 +21,13 @@ type Paladin struct {
 	Speed    int
 }
 
+type Hedgehog struct {
+	Health   int
+	Armoured int
+	Damage   int
+	Speed    int
+}
+
 func (s *Scout) SetHealth() {
 	s.Health = 100
 	return
@@ -78,6 +85,25 @@ func (p *Paladin) SetDamage() {
 
 func (p *Paladin) SetSpeed() {
 	p.Speed = 2
+	return
+}
 
+func (h *Hedgehog) SetHealth() {
+	h.Health = 1000
+	return
+}
+
+func (h *Hedgehog) SetArmour() {
+	h.Armoured = 1000
+	return
+}
+
+func (h *Hedgehog) SetDamage() {
+	h.Damage = 1000
+	return
+}
+
+func (h *Hedgehog) SetSpeed() {
+	h.Speed = 10
 	return
 }

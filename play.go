@@ -46,12 +46,21 @@ var Armored int
 var Damage int
 var Speed int
 
+var Heroes[]string
+
 func ChooseHero() {
+	Heroes =append(Heroes, "Разведчик")
+	Heroes =append(Heroes,  "Охотник")
+	Heroes =append(Heroes,  "Паладин")
+	Heroes =append(Heroes,  "??????")
+
 Pers:
 	fmt.Println("Выберете персонажа:")
-	fmt.Println("1. Разведчик")
-	fmt.Println("2. Охотник")
-	fmt.Println("3. Паладин")
+	for i := range Heroes{
+		fmt.Println(i+1,". ", Heroes[i])
+	}
+
+
 
 	reader := bufio.NewReader(os.Stdin)
 	choiceStr, _ := reader.ReadString('\n')
@@ -130,6 +139,63 @@ Pers:
 		fmt.Println()
 		fmt.Println("_______________________________")
 		fmt.Println()
+
+	case 4:
+		if strings.Contains(Heroes[3], "больше не доступен"){
+			fmt.Println("Этот персонаж больше вам не доступен! Выбирете другого!")
+			fmt.Println()
+			fmt.Println("_______________________________")
+			fmt.Println()
+
+			goto Pers
+		} else{
+			fmt.Println("Только самый достойный сможет выбрать этого персонажа!!!")
+			fmt.Println()
+			fmt.Println("Вам предстоит испытание...")
+			fmt.Println()
+			fmt.Println("Дайте ответ на вопрос: Какой у вас любимый цвет?")
+			reader := bufio.NewReader(os.Stdin)
+			choiceStr, _ := reader.ReadString('\n')
+			choiceStr = strings.ToLower(choiceStr)
+			if strings.Contains(choiceStr, "фиолетовый") {
+				fmt.Println()
+				fmt.Println("_______________________________")
+				fmt.Println()
+				fmt.Println("Вы оказались достойны")
+				fmt.Println()
+				fmt.Println("Выбран персонаж Ёж Русак!")
+				fmt.Println()
+				fmt.Println("_______________________________")
+				fmt.Println()
+				Hero := characters.Hedgehog{}
+				Hero.SetHealth()
+				Health = Hero.Health
+				OriginalHealth = Health
+				fmt.Println("Здоровье персонажа :", Health)
+				Hero.SetArmour()
+				Armored = Hero.Armoured
+				fmt.Println("Защита персонажа :", Armored)
+				Hero.SetDamage()
+				Damage = Hero.Damage
+				fmt.Println("Урон персонажа :", Damage)
+				Hero.SetSpeed()
+				Speed = Hero.Speed
+				fmt.Println("Скорость персонажа :", Speed)
+				fmt.Println()
+				fmt.Println("_______________________________")
+				fmt.Println()
+			} else {
+				fmt.Println("Вы оказались не дойстойны!!!")
+				fmt.Println()
+				fmt.Println("_______________________________")
+				fmt.Println()
+				Heroes[3] = Heroes[3] + " (больше не доступен)"
+				goto Pers
+			}
+		}
+
+
+
 
 	default:
 		fmt.Println("Такого персонажа пока нет :)")
