@@ -34,6 +34,15 @@ func CreateItems() {
 	boost.SetSpeedBoost()
 	Boost = boost.SpeedBoost
 
+	fmt.Println("Бонус аптечки:", Heal)
+	fmt.Println("Бонус брони:", Armour)
+	fmt.Println("Бонус заточки:", Weapon)
+	fmt.Println("Бонус зелья:", Boost)
+	fmt.Println()
+	fmt.Println("_______________________________")
+	fmt.Println()
+
+
 }
 
 var BossHealth int
